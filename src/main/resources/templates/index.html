@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <title>Board Service</title>
 </head>
@@ -7,17 +9,18 @@
 <h1>Welcome to Board Service</h1>
 
 <!-- 로그인 여부에 따라 링크 분기 -->
-<div th:if="${session.username != null}">
-    <p th:text="'안녕하세요, ' + ${session.username} + '님!'"></p>
+<div sec:authorize="isAuthenticated()">
+    안녕하세요, <span sec:authentication="name"></span>님!
     <a href="/boards">게시판 바로가기</a> |
     <a href="/members/logout">로그아웃</a>
 </div>
 
-<div th:if="${session.username == null}">
+<div sec:authorize="isAnonymous()">
     <p>먼저 로그인해주세요.</p>
     <a href="/members/login">로그인</a> |
     <a href="/members/register">회원가입</a>
 </div>
+
 
 </body>
 </html>

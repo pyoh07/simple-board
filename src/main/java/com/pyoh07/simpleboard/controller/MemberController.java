@@ -36,7 +36,7 @@ public class MemberController {
         return "member-login";
     }
 
-    // 로그인 처리
+    /*// 로그인 처리
     @PostMapping("/login")
     public String login(@RequestParam String username,
                         @RequestParam String password,
@@ -50,7 +50,7 @@ public class MemberController {
             model.addAttribute("error", "아이디 또는 비밀번호가 틀렸습니다.");
             return "member-login";
         }
-    }
+    }*/
 
     // 로그아웃
     @GetMapping("/logout")
